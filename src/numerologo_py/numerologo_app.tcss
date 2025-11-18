@@ -1,0 +1,30 @@
+#painel {
+    margin: 1 0;
+}
+
+.nome {
+    width: 2fr;
+}
+
+.data, .analisar {
+    width: auto;
+}
+
+#nome {
+    width: 1fr;
+}
+
+#data {
+    width: 17;
+}
+
+#analisar {
+    margin: 0 2;
+    width: auto;
+}
+
+#resultado {
+    border: block $accent;
+    margin: 1 2;
+    padding: 0 1;
+}
