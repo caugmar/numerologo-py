@@ -29,7 +29,8 @@ class NumerologoApp(App):
                 yield Static()
                 yield Button("Analisar", id="analisar",
                              tooltip="Clique aqui para iniciar a análise")
-            viewer = MarkdownViewer(id="resultado")
+            viewer = MarkdownViewer(id="resultado",
+                                    show_table_of_contents=False)
         viewer.border_title = "[b]Resultado[/] da Análise"
         yield viewer
         yield Footer()
