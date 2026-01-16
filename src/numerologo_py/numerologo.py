@@ -1,5 +1,5 @@
 import textos  # Importa o módulo convertido no passo anterior
-from typing import List, Dict, Union, Tuple
+from typing import List, Dict, Tuple
 
 
 class Numerologo:
@@ -106,7 +106,7 @@ class Numerologo:
         # Remove espaços e converte para minúsculas
         nome_limpo = nome.lower().replace(" ", "")
 
-        # Tabela de tradução para remover acentos (corrigindo a lógica do Scala)
+        # Tabela de tradução para remover acentos
         acento_mapping = str.maketrans(
             "áàâãäéèêẽëíìîĩïóòôõöúùûũüçñ",
             "aaaaaeeeeeiiiiiooooouuuuucn"
@@ -117,7 +117,7 @@ class Numerologo:
         return list(nome_normalizado)
 
     def _digitos_para_inteiros(self, data: str) -> List[int]:
-        """Converte uma string de data (e.g., '11/05/1976') para uma lista de dígitos inteiros."""
+        """Converte string de data ('11/05/1976') para lista de inteiros."""
         return [int(d) for d in data if d.isdigit()]
 
     def _somar_valores(self, valores: List[int]) -> int:
@@ -130,7 +130,8 @@ class Numerologo:
 
     def _reduzir(self, numeros: List[int]) -> int:
         """
-        Redução numerológica. Soma os dígitos até obter um número de 1 a 9, 11 ou 22.
+        Redução numerológica. 
+        Soma os dígitos até obter um número de 1 a 9, 11 ou 22.
         """
         resultado: int = self._somar_valores(numeros)
 
@@ -235,7 +236,7 @@ class Numerologo:
 </div>
         """
 
-    def analise_de_compatibilidade(self, nome1: str, data1: str, nome2: str, data2: str) -> str:
+    def analise_de_compatibilidade(self, nome1, data1, nome2, data2):
         """
         Gera o relatório HTML/XML da análise de compatibilidade.
         """
@@ -245,17 +246,18 @@ class Numerologo:
         destino1_orig = self.destino(nome1)
         destino2_orig = self.destino(nome2)
 
-        # 2. Reduzir 11->2 e 22->4 para o cálculo de compatibilidade (como no Scala)
+        # 2. Reduzir 11->2 e 22->4 para o cálculo de compatibilidade
         caminho1 = self._reduzir_para_compatibilidade(caminho1_orig)
         caminho2 = self._reduzir_para_compatibilidade(caminho2_orig)
         destino1 = self._reduzir_para_compatibilidade(destino1_orig)
         destino2 = self._reduzir_para_compatibilidade(destino2_orig)
 
-        # 3. Calcular o Fator de Compatibilidade (soma dos índices)
-        # O Scala usava List(caminho1, caminho2).sortWith(_<_) para a chave do texto,
-        # mas para o cálculo do fator, usava o valor não ordenado no Map aninhado.
-        # Python: usa .get() com um valor padrão de 0 para evitar KeyError, mas assume
-        # que os números 1-9 estão presentes no dicionário.
+        # 3. Calcular o Fator de Compatibilidade (soma dos índices) O Scala
+        #    usava List(caminho1, caminho2).sortWith(_<_) para a chave do
+        #    texto, mas para o cálculo do fator, usava o valor não ordenado no
+        #    Map aninhado. Python: usa .get() com um valor padrão de 0 para
+        #    evitar KeyError, mas assume que os números 1-9 estão presentes no
+        #    dicionário.
         try:
             compatibilidade1 = self._compatibilidade[caminho1][caminho2]
         except KeyError:
@@ -269,8 +271,9 @@ class Numerologo:
         fator = compatibilidade1 + compatibilidade2
         chances = self._chances_de_compatibilidade.get(fator, "Indefinidas")
 
-        # 4. Preparar as chaves (tuplas ordenadas) para buscar o texto do módulo 'textos'
-        # O módulo 'textos' (converted from Scala's Textos object) usa tuplas (menor, maior) como chave
+        # 4. Preparar as chaves (tuplas ordenadas) para buscar o texto do
+        #    módulo 'textos' O módulo 'textos' (converted from Scala's Textos
+        #    object) usa tuplas (menor, maior) como chave
         indice_caminho: Tuple[int, int] = tuple(sorted([caminho1, caminho2]))
         indice_destino: Tuple[int, int] = tuple(sorted([destino1, destino2]))
 

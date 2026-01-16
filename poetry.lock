@@ -199,6 +199,18 @@ files = [
 ]
 
 [[package]]
+name = "appdirs"
+version = "1.4.4"
+description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+optional = false
+python-versions = "*"
+groups = ["dev"]
+files = [
+    {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
+    {file = "appdirs-1.4.4.tar.gz", hash = "sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"},
+]
+
+[[package]]
 name = "asttokens"
 version = "3.0.0"
 description = "Annotate AST trees with source code positions"
@@ -1219,6 +1231,27 @@ files = [
     {file = "propcache-0.4.1-py3-none-any.whl", hash = "sha256:af2a6052aeb6cf17d3e46ee169099044fd8224cbaf75c76a2ef596e8163e2237"},
     {file = "propcache-0.4.1.tar.gz", hash = "sha256:f48107a8c637e80362555f37ecf49abe20370e557cc4ab374f04ec4423c97c3d"},
 ]
+
+[[package]]
+name = "ptpython"
+version = "3.0.32"
+description = "Python REPL build on top of prompt_toolkit"
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "ptpython-3.0.32-py3-none-any.whl", hash = "sha256:16435d323e5fc0a685d5f4dc5bb4494fb68ac68736689cd1247e1eda9369b616"},
+    {file = "ptpython-3.0.32.tar.gz", hash = "sha256:11651778236de95c582b42737294e50a66ba4a21fa01c0090ea70815af478fe0"},
+]
+
+[package.dependencies]
+appdirs = "*"
+jedi = ">=0.16.0"
+prompt_toolkit = ">=3.0.43,<3.1.0"
+pygments = "*"
+
+[package.extras]
+ptipython = ["ipython"]
 
 [[package]]
 name = "ptyprocess"

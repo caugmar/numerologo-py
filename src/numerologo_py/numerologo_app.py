@@ -19,8 +19,9 @@ class NumerologoApp(App):
         with HorizontalGroup(id="painel"):
             with VerticalGroup(classes="nome"):
                 yield Label(" Nome:")
+                msg = "Certifique-se de que o nome [b]esteja correto[/]"
                 yield Input(placeholder="Nome do consulente", id="nome",
-                            tooltip="Certifique-se de que o nome [b]esteja correto[/]")
+                            tooltip=msg)
             with VerticalGroup(classes="data"):
                 yield Label(" Nascimento:")
                 yield MaskedInput(template="99/99/9999", id="data",
@@ -29,8 +30,8 @@ class NumerologoApp(App):
                 yield Static()
                 yield Button("Analisar", id="analisar",
                              tooltip="Clique aqui para iniciar a análise")
-            viewer = MarkdownViewer(id="resultado",
-                                    show_table_of_contents=False)
+        viewer = MarkdownViewer(id="resultado",
+                                show_table_of_contents=False)
         viewer.border_title = "[b]Resultado[/] da Análise"
         yield viewer
         yield Footer()
