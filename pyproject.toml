@@ -17,6 +17,7 @@ dependencies = [
 packages = [{ include = "numerologo_py", from = "src" }]
 
 [tool.taskipy.tasks]
+list = "task -l"
 build = "pyinstaller numerologo_app.spec"
 clean = "rm -rf build/ dist/"
 
