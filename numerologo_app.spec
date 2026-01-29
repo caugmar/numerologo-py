@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['src/numerologo_py/numerologo_app.py'],
+    ['src/numerologo_py/app.py'],
     pathex=[],
     binaries=[],
-    datas=[('src/numerologo_py/numerologo_app.tcss', '.')],
+    datas=[('src/numerologo_py/estilos.tcss', '.')],
     hiddenimports=['textual.widgets._markdown_viewer'],
     hookspath=[],
     hooksconfig={},

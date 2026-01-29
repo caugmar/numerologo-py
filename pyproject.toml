@@ -2,9 +2,7 @@
 name = "numerologo-py"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Guto Marcicano",email = "caugmar@gmail.com"}
-]
+authors = [{ name = "Guto Marcicano", email = "caugmar@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12,<3.15"
 dependencies = [
@@ -12,11 +10,15 @@ dependencies = [
     "markdownify (>=1.2.2,<2.0.0)",
     "markdown (>=3.10.1,<4.0.0)",
     "prompt-toolkit (>=3.0.52,<4.0.0)",
-    "urwid (>=3.0.3,<4.0.0)"
+    "urwid (>=3.0.3,<4.0.0)",
 ]
 
 [tool.poetry]
-packages = [{include = "numerologo_py", from = "src"}]
+packages = [{ include = "numerologo_py", from = "src" }]
+
+[tool.taskipy.tasks]
+build = "pyinstaller numerologo_app.spec"
+clean = "rm -rf build/ dist/"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -27,5 +29,6 @@ dev = [
     "pyinstaller (>=6.16.0,<7.0.0)",
     "textual-dev (>=1.8.0,<2.0.0)",
     "ipython (>=9.7.0,<10.0.0)",
-    "ptpython (>=3.0.32,<4.0.0)"
+    "ptpython (>=3.0.32,<4.0.0)",
+    "taskipy (>=1.14.1,<2.0.0)",
 ]
