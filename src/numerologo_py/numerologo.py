@@ -233,6 +233,7 @@ class Numerologo:
         {descricoes.get('aniversario', 'Descrição não encontrada.')}
         {aniv_text}
     </div>
+    <h2>Fim da Análise</h2>
 </div>
         """
 

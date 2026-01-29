@@ -9,31 +9,40 @@ from numerologo import Numerologo
 
 
 class NumerologoApp(App):
-    CSS_PATH = "numerologo_app.tcss"
+    CSS_PATH = "estilos.tcss"
     BINDINGS = [("f1", "ajuda", "Ajuda"),
                 ("ctrl+q", "quit", "Sair"),
                 ("ctrl+t", "toggle_dark", "Mudar tema")]
 
     def compose(self):
+
         yield Header(show_clock=True)
+
         with HorizontalGroup(id="painel"):
+
             with VerticalGroup(classes="nome"):
                 yield Label(" Nome:")
-                msg = "Certifique-se de que o nome [b]esteja correto[/]"
+                tip = "Certifique-se de que o nome [b]esteja correto[/]"
                 yield Input(placeholder="Nome do consulente", id="nome",
-                            tooltip=msg)
+                            tooltip=tip)
+
             with VerticalGroup(classes="data"):
                 yield Label(" Nascimento:")
+                tip = "Informe a data de nascimento [b]correta[/]"
                 yield MaskedInput(template="99/99/9999", id="data",
-                                  tooltip="Informe a data de nascimento [b]correta[/]")
+                                  tooltip=tip)
+
             with VerticalGroup(classes="analisar"):
                 yield Static()
+                tip = "Clique aqui para iniciar a análise"
                 yield Button("Analisar", id="analisar",
-                             tooltip="Clique aqui para iniciar a análise")
+                             tooltip=tip)
+
         viewer = MarkdownViewer(id="resultado",
                                 show_table_of_contents=False)
         viewer.border_title = "[b]Resultado[/] da Análise"
         yield viewer
+
         yield Footer()
 
     def action_ajuda(self):
